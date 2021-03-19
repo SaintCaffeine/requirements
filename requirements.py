@@ -5,7 +5,16 @@ REQUIREMENTS = {}
 
 def add(name, version):
     REQUIREMENTS[name] = version
-
+   
+def exit_code(message):
+    print(message)
+    print('[!] Requirements are:')
+    for req in REQUIREMENTS:
+        print(f"{req}{'=='+str(REQUIREMENTS[req]) if REQUIREMENTS[req] else ''}")
+    print('You can try installing them manually.')
+    print('[!] quitting program...')
+    exit(1)
+    
 def check_reqs():
     print(time.ctime())
     print('[*] Checking requirements, please wait...')
@@ -24,10 +33,6 @@ def check_reqs():
                     print('[!] quitting program...')
                     exit(1)
     except (FileNotFoundError):
-        print(f'Error: pip not working!')
-        print('[!] quitting program...')
-        exit(1)
+        exit_code('Error: pip not working!')
     except Exception as e:
-        print(f'Error: {e}')
-        print('[!] quitting program...')
-        exit(1)
+        exit_code(f'Error: {e}')
