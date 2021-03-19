@@ -33,6 +33,6 @@ def check_reqs():
                     print('[!] quitting program...')
                     exit(1)
     except (FileNotFoundError):
-        exit_code('Error: pip not working!')
+        exit_code('ERROR: pip not working!')
     except Exception as e:
-        exit_code(f'Error: {e}')
+        exit_code(f'ERROR: {e}')
