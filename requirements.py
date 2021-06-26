@@ -19,10 +19,10 @@ def check_reqs():
     print(time.ctime())
     print('[*] Checking requirements, please wait...')
     try:
-        pip_out = subprocess.check_output('pip list').decode()
+        pip_out = subprocess.check_output('pip list').decode().replace(' ', '')
         for req in REQUIREMENTS.keys():
             VERSION = '=='+str(REQUIREMENTS[req]) if REQUIREMENTS[req] else ''
-            if f"{req}{(' '*15)+REQUIREMENTS[req] if VERSION else ''}" in pip_out:
+            if f"{req}{REQUIREMENTS[req] if VERSION else ''}" in pip_out:
                 print('[*] All requirements are satisfied!\n') if req == list(REQUIREMENTS.keys())[-1] else ''
                 continue
             else: 
