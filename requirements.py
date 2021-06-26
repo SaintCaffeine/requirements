@@ -6,7 +6,7 @@ REQUIREMENTS = {}
 def add(name, version):
     REQUIREMENTS[name] = version
    
-def exit_code(message):
+def quit(message):
     print(message)
     print('[!] Requirements are:')
     for req in REQUIREMENTS:
@@ -33,6 +33,6 @@ def check_reqs():
                     print('[!] quitting program...')
                     exit(1)
     except (FileNotFoundError):
-        exit_code('ERROR: pip not working!')
+        quit('ERROR: pip not working!')
     except Exception as e:
-        exit_code(f'ERROR: {e}')
+        quit(f'ERROR: {e}')
